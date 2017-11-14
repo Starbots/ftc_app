@@ -2,13 +2,12 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
 
-@TeleOp(name="TeleOp Team 2", group="Driver Controlled")
-public class TeleOp_Team2 extends OpMode {
+@TeleOp(name="TeleOp Team 2 Same Button", group="Driver Controlled")
+public class TeleOp_Team2SameButton extends OpMode {
     private float inputScale = 1f;
 
     private DcMotor motorRight;
@@ -38,11 +37,7 @@ public class TeleOp_Team2 extends OpMode {
 
         motorRight.setPower(-right);
         motorLeft.setPower(-left);
-       // motorWinch.setPower(lTrigger);
 
-        //if(gamepad1.right_bumper) {
-
-        //}
         if(gamepad1.right_bumper) {
             motorWinch.setPower(0.2);
         }
@@ -60,12 +55,12 @@ public class TeleOp_Team2 extends OpMode {
         } else if(gamepad1.b) {
             servoRight.setPosition(0.0);
         }
-        else if (gamepad1.x) {
+        if (gamepad1.y) {
             // moves half.
-            servoLeft.setPosition(0.5);
-        } else if (gamepad1.a) {
-            // moves full.
             servoLeft.setPosition(0.0);
+        } else if (gamepad1.b) {
+            // moves full.
+            servoLeft.setPosition(0.5);
         }
     }
 
