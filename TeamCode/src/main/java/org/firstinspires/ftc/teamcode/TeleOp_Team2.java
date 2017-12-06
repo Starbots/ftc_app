@@ -55,17 +55,16 @@ public class TeleOp_Team2 extends OpMode {
 
         if(gamepad1.y) {
             // moves back.
-            servoRight.setPosition(0.5);
+            servoRight.setPosition(0.0);
 
         } else if(gamepad1.b) {
-            servoRight.setPosition(0.0);
+            servoRight.setPosition(1);
         }
-        else if (gamepad1.x) {
-            // moves half.
-            servoLeft.setPosition(0.5);
+        else if (gamepad1.x){
+            servoLeft.setPosition(0.0);
         } else if (gamepad1.a) {
             // moves full.
-            servoLeft.setPosition(0.0);
+            servoLeft.setPosition(1.0);
         }
     }
 
