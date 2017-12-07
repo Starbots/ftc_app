@@ -52,13 +52,13 @@ public class TeleOp_Team2SameButton extends OpMode {
             // moves back.
             servoRight.setPosition(0.5);
 
-        } else if(gamepad1.b) {
+        } else if(gamepad1.x) {
             servoRight.setPosition(0.0);
         }
         if (gamepad1.y) {
             // moves half.
             servoLeft.setPosition(0.0);
-        } else if (gamepad1.b) {
+        } else if (gamepad1.x) {
             // moves full.
             servoLeft.setPosition(0.5);
         }
