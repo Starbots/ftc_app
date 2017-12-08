@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 import static com.qualcomm.hardware.hitechnic.HiTechnicNxtIrSeekerSensor.DIRECTION;
@@ -10,7 +10,7 @@ import static com.qualcomm.hardware.hitechnic.HiTechnicNxtIrSeekerSensor.DIRECTI
  * All methods are blocking (they don't return until their job is finished).
  */
 
-public abstract class AutonomousBase extends OpMode {
+public abstract class AutonomousBase extends LinearOpMode {
     /**
      * maximum power for the drivetrain that is passed to motor.setPower
      */
@@ -31,7 +31,7 @@ public abstract class AutonomousBase extends OpMode {
     protected DcMotor leftDrivetrain;
     protected DcMotor rightDrivetrain;
 
-    public void init() {
+    public void initialize() {
         leftDrivetrain = hardwareMap.dcMotor.get("left");
         rightDrivetrain = hardwareMap.dcMotor.get("right");
         leftDrivetrain.setDirection(DcMotor.Direction.REVERSE);
@@ -69,9 +69,8 @@ public abstract class AutonomousBase extends OpMode {
      * @param power the power of the motors
      */
     protected void turn(float time, float power) {
-        int coefficient = power > 0 ? 1 : -1;
-        leftDrivetrain.setPower(power * -coefficient);
-        rightDrivetrain.setPower(power * coefficient);
+        leftDrivetrain.setPower(-power);
+        rightDrivetrain.setPower(power);
         wait(time);
         leftDrivetrain.setPower(0);
         rightDrivetrain.setPower(0);
