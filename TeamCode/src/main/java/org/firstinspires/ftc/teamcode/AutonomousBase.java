@@ -34,7 +34,7 @@ public abstract class AutonomousBase extends OpMode {
     public void init() {
         leftDrivetrain = hardwareMap.dcMotor.get("left");
         rightDrivetrain = hardwareMap.dcMotor.get("right");
-        //leftDrivetrain.setDirection();
+        leftDrivetrain.setDirection(DcMotor.Direction.REVERSE);
     }
 
     /**

@@ -27,16 +27,16 @@ public class TeleOp_Team2SameButton extends OpMode {
         servoRight = hardwareMap.servo.get("sRight");
         servoLeft = hardwareMap.servo.get("sLeft");
 
-        motorLeft.setDirection(DcMotor.Direction.REVERSE);
+        motorRight.setDirection(DcMotor.Direction.REVERSE);
     }
 
     @Override
     public void loop() {
-        double right = gamepad2.right_stick_y;
-        double left = gamepad2.left_stick_y;
+        double right = gamepad2.right_stick_y * inputScale;
+        double left = gamepad2.left_stick_y * inputScale;
 
-        motorRight.setPower(-right);
-        motorLeft.setPower(-left);
+        motorRight.setPower(right);
+        motorLeft.setPower(left);
 
         if(gamepad1.right_bumper) {
             motorWinch.setPower(0.2);
@@ -51,18 +51,17 @@ public class TeleOp_Team2SameButton extends OpMode {
         if(gamepad1.y) {
             // moves back.
             servoRight.setPosition(0.5);
+            servoLeft.setPosition(0.0);
 
         } else if(gamepad1.x) {
             servoRight.setPosition(0.0);
-        }
-        if (gamepad1.y) {
-            // moves half.
-            servoLeft.setPosition(0.0);
-        } else if (gamepad1.x) {
-            // moves full.
             servoLeft.setPosition(0.5);
         }
-    }
+
+            // moves full.
+
+        }
+
 
 
     @Override

@@ -37,8 +37,8 @@ public abstract class AutonomousParkingZone extends AutonomousBase {
     @Override
     public void loop() {
         wait(initial_wait);
-        forward(2, 0.2F);
-        turn(0.5F, 0.2F * (isLeft ? -1 : 1));
-        forward(1, 0.2F);
+        forward(2, 0.5F);
+        turn(0.5F, 0.5F * (isLeft ? -1 : 1));
+        forward(1, 0.5F);
     }
 }
