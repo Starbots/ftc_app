@@ -4,10 +4,9 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
-import com.qualcomm.robotcore.util.Range;
 
-@TeleOp(name="TeleOp Team 2 Same Button", group="Driver Controlled")
-public class TeleOp_Team2SameButton extends OpMode {
+@TeleOp(name="TeleOp Team 2 Same Controller", group="Driver Controlled")
+public class TeleOp_Team2SameController extends OpMode {
     private float inputScale = 1f;
 
     private DcMotor motorRight;
@@ -32,8 +31,8 @@ public class TeleOp_Team2SameButton extends OpMode {
 
     @Override
     public void loop() {
-        double right = gamepad2.right_stick_y * inputScale;
-        double left = gamepad2.left_stick_y * inputScale;
+        double right = gamepad1.right_stick_y * inputScale;
+        double left = gamepad1.left_stick_y * inputScale;
 
         motorRight.setPower(right);
         motorLeft.setPower(left);
@@ -48,20 +47,25 @@ public class TeleOp_Team2SameButton extends OpMode {
             motorWinch.setPower(-0.05);
         }
 
-
         if(gamepad1.y) {
-            //open arms
+            // moves back.   
             servoRight.setPosition(0.5);
             servoLeft.setPosition(0.0);
+
         } else if(gamepad1.x) {
-            //close arms
             servoRight.setPosition(0.0);
             servoLeft.setPosition(0.5);
         }
-    }
+
+            // moves full.
+
+        }
+
+
 
     @Override
     public void stop() {
 
     }
+
 }
